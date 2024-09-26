@@ -20,9 +20,11 @@ public class RegistrationController {
         model.addAttribute("userEntity", new UserEntity());
         return "registration";
     }
+
     @PostMapping("/registration")
     public String registration(@ModelAttribute("userEntity") UserEntity userEntity, Model model){
         userService.saveUser(userEntity);
         return "redirect:/login";
+
     }
 }

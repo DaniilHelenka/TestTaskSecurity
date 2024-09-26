@@ -1,18 +1,25 @@
 package com.example.testtasksecurity.controller;
 
+import com.example.testtasksecurity.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+@AllArgsConstructor
 @Controller
 
 public class MainController {
+
+    UserService userService;
+
     @GetMapping("/")
-    public String main(){
+    public String main(Model model) {
+        model.addAttribute("users", userService.getAll());
         return "main";
     }
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
-
 }
